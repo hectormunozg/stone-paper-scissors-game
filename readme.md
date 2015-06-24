@@ -1,41 +1,12 @@
-# Ultra simple jQuery lightbox (check [demo](http://hectormunozg.github.io/simple-jquery-lightbox/))
-## How to use it
-### 1. Create in your css a `div id="overlay"` like this:
-```css
-#overlay {
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	left: 0;
-	top: 0;
-	background: rgba(0, 0, 0, 0.95);
-	display: none;
-	z-index: 999;
-} 
-```
-You can style the image shown inside the overlay as well:
-```css
-#overlay img {
-	width: 70%;
-	height: auto;
-	display: block;
-	text-align: center;
-	margin: 20px auto;
-}
-```
-### 2. Change your image path modifying the app.js
-```javascript
-var imagePath = '#gallery > .container > .row > div > a > img';
-```
-### 3. Enjoy! Do not forget to add jQuery to your project!
-```html
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- lightbox app -->
-    <script src="js/app.js"></script>
-```
+# Stone-Scissors-Paper Game! (check [demo](http://hectormunozg.github.io/stone-paper-scissors-game/))
+## How to play
+### 1. You can change your name or just start playing!
+### 2. Select your choice (stone, paper or scissors)
+### 3. Computer will generate a random choice as well (yes, it is random, so good luck :-) )
+### 4. You can start over as many times as you want 
+### 5. Check at the bottom of the page your stats and share it with your friends!
 
 ## Credits
 - Basic styling by [Bootstrap 3](http://getbootstrap.com)
-- Images from [Unsplash](http://unsplash.com)
+- Icons made by [Freepik](http://www.flaticon.com/authors/freepik) from [Flaticon](http://www.flaticon.com) under license [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/)
 - Inspired by jQuery [Treehouse course](http://teamtreehouse.com)
