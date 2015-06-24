@@ -42,4 +42,25 @@ $('#yourNameBtn').click(function() {
 	gameRoulette();
 });
 
+// show game board on click
+$('#gameBtn').click(function() {
+	showBoard();
+	gameRoulette();
+	$(this).prop('disabled', true);
+});
+
+// select you option
+$('.gameIconsSet').click(function(event) {
+	event.preventDefault();
+	//prevent second choice before finishing the game
+	if (!gameStarted) {
+		gameStarted = true;
+		$(this).css('width', '160px');
+		clearInterval(rouletteEffect);
+	} else {
+		// yeahhh
+	};
+
+
+});
 
