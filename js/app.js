@@ -26,6 +26,8 @@ var computer = {
 
 var randomNumber = "";
 
+$('#startOverBtn').hide();
+
 // functions
 var showBoard = function() {
 	$('#gamePlayerBoard').show();
@@ -61,25 +63,51 @@ var computerChoose = function() {
 
 }
 
+var startOverBtn = function() {
+	$('#startOverBtn').show();
+}
+
+var alertWin = function(){
+	startOverBtn();
+	$('#alerts').append("<div class='col-md-8 col-md-offset-2'><div class='alert alert-success alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Yeahhh! </strong>" + playerOne.currentChoose + ' beats ' + computer.currentChoose + '!!!' + ' You win!!!' + "</div></div>")
+}
+
+var alertLose = function() {
+	startOverBtn();
+	$('#alerts').append("<div class='col-md-8 col-md-offset-2'><div class='alert alert-danger alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>UPPPPSSS! </strong>" + computer.currentChoose + ' beats ' + playerOne.currentChoose + '!!!' + ' You lose!!!' + "</div></div>")
+}
+
+var alertDraw = function() {
+	startOverBtn();
+	$('#alerts').append("<div class='col-md-8 col-md-offset-2'><div class='alert alert-warning alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Hmmmmm!! </strong>" + 'Draw!!! Not bad, right?' + "</div></div>")
+}
+
+
 var evaluateGame = function() {
 	if (playerOne.currentChoose === computer.currentChoose) {
 		console.log('draw!');
+		alertDraw();
 	} else if (playerOne.currentChoose === "stone") {
 				switch(playerOne.currentChoose === "stone"){
 					case computer.currentChoose === "paper":
 						console.log('Paper beat stone! Computer wins!');
+						alertLose();
 						break;
 					case computer.currentChoose === "scissors":
 						console.log('Stone beat Scissors! Player wins!');
+						alertWin();
+						break;
 
 					} 
 				} else if (playerOne.currentChoose === "scissors") {
 						switch(playerOne.currentChoose === "scissors"){
 							case computer.currentChoose === "paper":
 								console.log('Scissors beat paper! Player wins');
+								alertWin();
 								break;
 							case computer.currentChoose === "stone":
 								console.log('Stone beats scissors! Computer wins');
+								alertLose();
 								break;
 							}
 
@@ -87,9 +115,11 @@ var evaluateGame = function() {
 									switch(playerOne.currentChoose === "paper"){
 										case computer.currentChoose === "scissors":
 											console.log('Scissors beats paper! Computer wins');
+											alertLose();
 											break;
 										case computer.currentChoose === "stone":
 											console.log('Paper beats stone! Player wins');
+											alertWin();
 											break;
 										}
 								}

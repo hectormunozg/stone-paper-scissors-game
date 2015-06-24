@@ -96,6 +96,9 @@ margin-bottom: 100px;
 	display: none;
 }
 
+.btn-success {
+	margin-bottom: 20px;
+}
 
 footer {
 	position: initial;

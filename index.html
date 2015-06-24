@@ -70,19 +70,11 @@
 				<li><img class="roulette computerIcon" id="scissors" src="img/scissors.svg" alt=""></li>
 				<li><img class="roulette computerIcon" id="stone" src="img/stone.svg" alt=""></li>
 			</ul>
-			<div class="col-md-8 col-md-offset-2">
-				<div class="alert alert-success alert-dismissible fade in" role="alert">
-				  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				  <strong>Congrats!</strong> You win!!!
-				</div>		
-			</div>
-
-			<div class="col-md-8 col-md-offset-2">
-				<div class="alert alert-danger alert-dismissible fade in" role="alert">
-				  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				  <strong>UPPPPSSS!</strong> You lose!!!
-				</div>		
-			</div>		
+			<div id="alerts">
+				<div class="btn-wrap">
+					<button type="button" class="btn btn-success btn-lg" id="startOverBtn">Start Over!</button>
+				</div>
+			</div>	
 		</div>
 	</div>
 </section>
@@ -113,10 +105,12 @@
 						<tr class="heading">
 							<th id="userNameScores">Player 1</th>
 							<th>Computer</th>
+							<th>Draw</th>
 						</tr>
 						<tr class="single-game">
 							<td class="score">10</td>
 							<td class="score">0</td>
+							<td class="score">1</td>
 						</tr>
 					</table>		
 				</div>
