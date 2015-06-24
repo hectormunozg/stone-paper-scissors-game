@@ -5,6 +5,7 @@ var gameOptions = {
 	scissorsPath    	: "img/scissors.svg",
 	paperPath       	: "img/paper.svg",
 	gameStarted 		: false,
+	totalGames			: 0,
 	gameValues 			: [
 							"stone",
 							"scissors",
@@ -24,12 +25,6 @@ var computer = {
 };
 
 var randomNumber = "";
-
-var gameValues = [
-	"stone",
-	"scissors",
-	"paper"
-];
 
 // functions
 var showBoard = function() {
@@ -55,11 +50,17 @@ var gameRoulette = function() {
 var storeSelection = function(target) {
 	//prevent second choice before finishing the game
 	if (!gameOptions.gameStarted) {
+
 		gameOptions.gameStarted = true;
 		target.css('width', '160px');
+
 		playerOne.currentChoose = $(target).attr('game');
+
+
 	} else {
-		// yeahhh
+		console.log(gameOptions.gameStarted);
+
+
 	};		
 }
 var getRandom = function() {
@@ -70,10 +71,27 @@ var computerChoose = function() {
 	$('#computerChoose').hide();
 	rand = getRandom(0,3);
 	computer.currentChoose = (gameOptions.gameValues[randomNumber]);
-	console.log(gameOptions.gameValues[randomNumber]);
 	$('#'+computer.currentChoose).show();
 
+	console.log(computer.currentChoose + ' ' + playerOne.currentChoose);
+
 }
+
+var evaluateGame = function() {
+	if (playerOne.CurrentChoose === computer.currentChoose) {
+		console.log('draw!');
+	};
+};
+
+var addScores = function() {};
+
+var displayResults = function() {};
+
+var stopCurrentGame = function() {};
+
+var startOver = function() {};
+
+
 
 // change your name via modal 
 $('#yourNameBtn').click(function() {
@@ -101,24 +119,21 @@ $('#gameBtn').click(function() {
 // player 1 choose option
 $('.gameIconsSet').click(function(event) {
 	event.preventDefault();
-	storeSelection($(this));
-	computerChoose();
+
+	if (!gameOptions.gameStarted) {
+
+		gameOptions.gameStarted = true;
+		$(this).css('width', '160px');
+		playerOne.currentChoose = $(this).attr('game');
+		computerChoose();
+		evaluateGame();
+
+	// addScores();
+	// displayResults();
+	// stopCurrentGame();		
+
+	} else {
+		console.log(gameOptions.gameStarted);
+	};	
+
 });
-
-
-
-
-// computer randomly select option
-// game evaluate who wins
-// data is stored in stats
-// game is prepared for next round
-
-
-
-
-
-
-
-
-
-
