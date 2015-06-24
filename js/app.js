@@ -1,10 +1,11 @@
-// variables
-var userName = "";
-var userNameText = "";
-var stone = "img/stone.svg";
-var scissors = "img/scissors.svg";
-var paper = "img/paper.svg";
-var gameStarted = false;
+// variables and objects
+
+var gameOptions = {
+	stone 		: "img/stone.svg",
+	scissors    : "img/scissors.svg",
+	paper       : "img/paper.svg",
+	gameStarted : false
+};
 
 var playerOne = {
 	userName  	  : "",
@@ -41,13 +42,13 @@ var gameRoulette = function() {
 // change your name via modal 
 $('#yourNameBtn').click(function() {
 	// store the variable when button "save changes" is pressed
-	var userName = $('#userName').val();
+	playerOne.userName = $('#userName').val();
 	// change the paragraph
-	$('#userNameText').text('All right, ' + userName + "! Let's start! Your turn!");
+	$('#userNameText').text('All right, ' + playerOne.userName + "! Let's start! Your turn!");
 	// change table 1 name
-	$('#userNameTable').text(userName + ' Choose');
+	$('#userNameTable').text(playerOne.userName + ' Choose');
 	// change table 2 name
-	$('#userNameScores').text(userName);
+	$('#userNameScores').text(playerOne.userName);
 	// show game boards
 	showBoard();
 	gameRoulette();
