@@ -1,0 +1,104 @@
+html, h1, h2, h3, p, ul, li, footer, table {
+	font-family: 'Roboto', sans-serif;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.main-title {
+	text-align: center;
+	font-weight: 400;
+}
+
+.subtitle {
+	font-size: 18px;
+	text-align: center;
+	font-weight: 300;
+}
+
+h2 {
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+h3 {
+	font-size: 16px;
+}
+
+ul > li {
+	font-size: 13px;
+}
+
+.btn-wrap {
+	text-align: center;
+}
+
+.yourName {
+	margin-bottom: 50px;
+	margin-top: 100px;
+}
+
+.gameIconsSet {
+	-webkit-transition: all 0.5s;
+	   -moz-transition: all 0.5s;
+	    -ms-transition: all 0.5s;
+	     -o-transition: all 0.5s;
+	        transition: all 0.5s;
+}
+
+.gameIconsSet:hover {
+	opacity: 0.6;
+}
+
+.roulette {
+	
+}
+
+.gameChoose {
+	text-align: center;
+	margin: 30px auto;
+}
+
+.gameChoose li {
+	list-style: none;
+	display: inline-block;
+}
+
+.gameChoose li img {
+	width: 100px;
+	margin-right: 50px;
+}
+
+.gameIcons {
+	width: 100%;
+	max-width: 30px;
+	height: auto;
+	text-align: center;
+	display: block;
+	margin: 0 auto;
+}
+
+.win {
+	background-color: green;
+}
+
+.lose {
+	background-color: red;
+}
+
+.gameStats {
+margin-bottom: 100px;
+}
+
+#gamePlayerBoard, #gameComputerBoard, #gameStatsWrap {
+	display: none;
+}
+
+footer {
+	position: initial;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
