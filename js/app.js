@@ -1,10 +1,13 @@
 // variables and objects
 
 var gameOptions = {
-	stone 		: "img/stone.svg",
-	scissors    : "img/scissors.svg",
-	paper       : "img/paper.svg",
-	gameStarted : false
+	stone 			: "img/stone.svg",
+	scissors    	: "img/scissors.svg",
+	paper       	: "img/paper.svg",
+	stoneValue  	: 0,
+	scissorsValue 	: 1,
+	paperValue   	: 2,
+	gameStarted 	: false
 };
 
 var playerOne = {
@@ -52,6 +55,7 @@ $('#yourNameBtn').click(function() {
 	// show game boards
 	showBoard();
 	gameRoulette();
+	$('#gameBtn').prop('disabled', true);
 });
 
 // show game board on click
@@ -65,14 +69,12 @@ $('#gameBtn').click(function() {
 $('.gameIconsSet').click(function(event) {
 	event.preventDefault();
 	//prevent second choice before finishing the game
-	if (!gameStarted) {
-		gameStarted = true;
+	if (!gameOptions.gameStarted) {
+		gameOptions.gameStarted = true;
 		$(this).css('width', '160px');
 	} else {
 		// yeahhh
 	};
-
-
 });
 
 // player 1 choose option
