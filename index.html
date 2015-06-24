@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Stone, paper & scissors game</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  <div class="container">
+    <div class="row">
+      <h1 class="main-title">Stone, paper & scissors game (view on <a href="">GitHub</a>)</h1>
+      <h2 class="subtitle">by <a href="http://twitter.com/hectormunozg">Héctor Muñoz</a></h2>
+<!--       <div class="col-lg-8 col-lg-offset-2">
+        <p class="description">Very simple jQuery lightbox. Check the project on <a href="">GitHub</a>.</p>
+        <h3>Credits</h3>
+        <ul>
+          <li>Basic styling by <a href="http://getbootstrap.com">Bootstrap 3</a></li>
+          <li>Icons by <a href="http://www.flaticon.com/authors/freepik">Freepik</a></li>
+        </ul> -->
+      </div>
+    </div>
+  </div>
+<section class="yourName">
+	<div class="container">
+		<div class="row">
+			<h2>By default, you are player 1, do you want to change it?</h2>
+			<div class="btn-wrap">
+				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Change my name!</button>
+				<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" id="gameBtn">I want to play!!</button>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="gamePlayerBoard">
+	<div class="container">
+		<div class="row">
+			<h2 id="userNameText">Start the game! Your turn!</h2>
+			<ul class="gameChoose" id="playerChoose">
+				<li><a href="#"><img class="gameIconsSet" src="img/paper.svg" alt=""></a></li>
+				<li><a href="#"><img class="gameIconsSet" src="img/scissors.svg" alt=""></a></li>
+				<li><a href="#"><img class="gameIconsSet" src="img/stone.svg" alt=""></a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+<section id="gameComputerBoard">
+	<div class="container">
+		<div class="row">
+			<ul class="gameChoose" id="computerChoose">
+				<li><img class="roulette" src="img/paper.svg" alt=""></li>
+				<li><img class="roulette" src="img/scissors.svg" alt=""></li>
+				<li><img class="roulette" src="img/stone.svg" alt=""></li>
+			</ul>
+			<div class="col-md-8 col-md-offset-2">
+				<div class="alert alert-success alert-dismissible fade in" role="alert">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  <strong>Congrats!</strong> You win!!!
+				</div>		
+			</div>
+
+			<div class="col-md-8 col-md-offset-2">
+				<div class="alert alert-danger alert-dismissible fade in" role="alert">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  <strong>UPPPPSSS!</strong> You lose!!!
+				</div>		
+			</div>		
+		</div>
+	</div>
+</section>
+
+<section class="gameStats" id="gameStatsWrap">
+	<div class="container">
+		<div class="row">
+			<h2>Here are your stats!</h2>	
+			<div class="col-lg-8 col-md-8 col-sm-7">			
+				<table class="table table-striped">
+					<tr class="heading">
+						<th>#</th>
+						<th id="userNameTable">Player 1 Choose</th>
+						<th>Computer Choose</th>
+						<th>Who wins</th>
+					</tr>
+					<tr class="single-game">
+						<td class="gameNumber">1</td>
+						<td class="playerChoose lose"><img src="img/paper.svg" class="gameIcons" alt=""></td>
+						<td class="computerChoose win"><img src="img/stone.svg" class="gameIcons" alt=""></td>
+						<td class="whoWins">Computer wins!</td>
+					</tr>
+				</table>
+			</div>
+			<div class="scoreTable">
+				<div class="col-lg-4 col-md-4 col-sm-5">
+					<table class="table table-bordered">
+						<tr class="heading">
+							<th id="userNameScores">Player 1</th>
+							<th>Computer</th>
+						</tr>
+						<tr class="single-game">
+							<td class="score">10</td>
+							<td class="score">0</td>
+						</tr>
+					</table>		
+				</div>
+			</div>	
+
+		</div>
+	</div>
+</section>
+
+	<!-- modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Change your name</h4>
+	      </div>
+	      <div class="modal-body">
+	        <input type="text" id="userName" placeholder="Player 1" class="form-control">
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" data-dismiss="modal" id="yourNameBtn">Save changes</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+  <footer>
+  	<div>Icons made by <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+  </footer>
+</html>
