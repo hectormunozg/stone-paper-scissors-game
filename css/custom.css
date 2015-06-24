@@ -58,9 +58,10 @@ ul > li {
 .gameChoose {
 	text-align: center;
 	margin: 30px auto;
+	width: 100%;
 }
 
-.gameChoose li {
+.gameChoose,  li {
 	list-style: none;
 	display: inline-block;
 }
@@ -91,7 +92,7 @@ ul > li {
 margin-bottom: 100px;
 }
 
-#gamePlayerBoard, #gameComputerBoard, #gameStatsWrap {
+#gamePlayerBoard, #gameComputerBoard, #gameStatsWrap, .computerChooseFinal {
 	display: none;
 }
 

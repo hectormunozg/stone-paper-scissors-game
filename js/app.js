@@ -1,13 +1,13 @@
 // variables and objects
 
 var gameOptions = {
-	stone 			: "img/stone.svg",
-	scissors    	: "img/scissors.svg",
-	paper       	: "img/paper.svg",
-	stoneValue  	: 0,
-	scissorsValue 	: 1,
-	paperValue   	: 2,
-	gameStarted 	: false
+	stonePath 			: "img/stone.svg",
+	scissorsPath    	: "img/scissors.svg",
+	paperPath       	: "img/paper.svg",
+	stoneValue  		: 0,
+	scissorsValue 		: 1,
+	paperValue   		: 2,
+	gameStarted 		: false
 };
 
 var playerOne = {
@@ -42,6 +42,22 @@ var gameRoulette = function() {
 	});	
 }
 
+var storeSelection = function(target) {
+	//prevent second choice before finishing the game
+	if (!gameOptions.gameStarted) {
+		gameOptions.gameStarted = true;
+		target.css('width', '160px');
+		playerOne.currentChoose = $(target).attr('game');
+	} else {
+		// yeahhh
+	};		
+}
+
+var computerChoose = function() {
+	$('#computerChoose').hide();
+	$('#computerChooseFinal').show();
+}
+
 // change your name via modal 
 $('#yourNameBtn').click(function() {
 	// store the variable when button "save changes" is pressed
@@ -65,19 +81,16 @@ $('#gameBtn').click(function() {
 	$(this).prop('disabled', true);
 });
 
-// select you option
+// player 1 choose option
 $('.gameIconsSet').click(function(event) {
 	event.preventDefault();
-	//prevent second choice before finishing the game
-	if (!gameOptions.gameStarted) {
-		gameOptions.gameStarted = true;
-		$(this).css('width', '160px');
-	} else {
-		// yeahhh
-	};
+	storeSelection($(this));
+	computerChoose();
 });
 
-// player 1 choose option
+
+
+
 // computer randomly select option
 // game evaluate who wins
 // data is stored in stats
