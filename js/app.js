@@ -4,10 +4,12 @@ var gameOptions = {
 	stonePath 			: "img/stone.svg",
 	scissorsPath    	: "img/scissors.svg",
 	paperPath       	: "img/paper.svg",
-	stoneValue  		: 0,
-	scissorsValue 		: 1,
-	paperValue   		: 2,
-	gameStarted 		: false
+	gameStarted 		: false,
+	gameValues 			: [
+							"stone",
+							"scissors",
+							"paper"
+						]
 };
 
 var playerOne = {
@@ -20,6 +22,14 @@ var computer = {
 	totalWins	  : 0,
 	currentChoose : ""
 };
+
+var randomNumber = "";
+
+var gameValues = [
+	"stone",
+	"scissors",
+	"paper"
+];
 
 // functions
 var showBoard = function() {
@@ -52,10 +62,17 @@ var storeSelection = function(target) {
 		// yeahhh
 	};		
 }
+var getRandom = function() {
+  randomNumber =  Math.floor(Math.random() * 2);
+}
 
 var computerChoose = function() {
 	$('#computerChoose').hide();
-	$('#computerChooseFinal').show();
+	rand = getRandom(0,3);
+	computer.currentChoose = (gameOptions.gameValues[randomNumber]);
+	console.log(gameOptions.gameValues[randomNumber]);
+	$('#'+computer.currentChoose).show();
+
 }
 
 // change your name via modal 

@@ -92,9 +92,10 @@ ul > li {
 margin-bottom: 100px;
 }
 
-#gamePlayerBoard, #gameComputerBoard, #gameStatsWrap, .computerChooseFinal {
+#gamePlayerBoard, #gameComputerBoard, #gameStatsWrap, .computerIcon {
 	display: none;
 }
+
 
 footer {
 	position: initial;
