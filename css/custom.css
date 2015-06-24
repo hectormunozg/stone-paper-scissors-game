@@ -17,9 +17,15 @@ a:hover {
 	font-weight: 300;
 }
 
+h1 {
+	font-size: 18px;
+}
+
 h2 {
 	text-align: center;
 	margin-bottom: 40px;
+	margin-top: 5px;
+	font-size: 16px;
 }
 
 h3 {
@@ -109,4 +115,10 @@ footer {
 	left: 0;
 	width: 100%;
 	text-align: center;
+}
+
+.fb_iframe_widget {
+	vertical-align: top;
+	padding-top: 7px;
+	padding-left: 10px;
 }
