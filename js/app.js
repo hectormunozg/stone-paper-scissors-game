@@ -34,12 +34,13 @@ var socialSharingCount = 0;
 $('#startOverBtn').hide();
 
 // functions
+	// show the whole board
 var showBoard = function() {
 	$('#gamePlayerBoard').show();
 	$('#gameComputerBoard').show();
 	$('#gameStatsWrap').show();	
 };
-
+	// roulette efect
 var rouletteEffect = function() {
     setInterval(function(){
       $('#computerChoose li:first-child').fadeOut(0)
@@ -58,6 +59,7 @@ var getRandom = function() {
   randomNumber =  Math.floor(Math.random() * 3);
 }
 
+// computer gets random choice
 var computerChoose = function() {
 	$('#computerChoose').hide();
 	rand = getRandom(0,3);
@@ -65,13 +67,14 @@ var computerChoose = function() {
 	$('#'+computer.currentChoose).show();
 
 	console.log(playerOne.currentChoose + ' ' + computer.currentChoose);
-
 }
 
+// show start again button
 var startOverBtn = function() {
 	$('#startOverBtn').show();
 }
 
+// alerts
 var alertWin = function(){
 	startOverBtn();
 	$('#alerts').append("<div id='alert' class='col-md-8 col-md-offset-2'><div class='alert alert-success alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Yeahhh! </strong>" + playerOne.currentChoose + ' beats ' + computer.currentChoose + '!!!' + ' You win!!!' + "</div></div>")
@@ -87,7 +90,9 @@ var alertDraw = function() {
 	$('#alerts').append("<div id='alert' class='col-md-8 col-md-offset-2'><div class='alert alert-warning alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Hmmmmm!! </strong>" + 'Draw!!! Not bad, right?' + "</div></div>")
 }
 
+// evaluation of choices
 var evaluateGame = function() {
+	// checking scenarios
 	if (playerOne.currentChoose === computer.currentChoose) {
 		gameOptions.gameWinner = "draw";
 		console.log('draw!');
@@ -140,6 +145,7 @@ var evaluateGame = function() {
 
 	};
 
+// adding scores to boards
 var addScores = function() {
 	gameOptions.totalGames = gameOptions.totalGames + 1;
 	$('#scoreTotal').text(gameOptions.totalGames);
@@ -169,6 +175,7 @@ var addScores = function() {
 
 };
 
+// displaying icons on table
 var displayIconTable = function() {
 	switch(playerOne.currentChoose !== ""){
 		case playerOne.currentChoose == "stone":
@@ -199,7 +206,7 @@ var displayIconTable = function() {
 
 };
 
-
+// show username on tables
 var displayUserName = function() {
 	if (gameOptions.gameWinner == "player") {
 		return playerOne.userName;
@@ -210,10 +217,11 @@ var displayUserName = function() {
 			}
 };
 
+// displaying social modal
 var socialSharing = function() {
-	if ((socialSharingCount > 0)) {
+	if ((socialSharingCount > 10)) {
 		$('#socialSharing').modal('show');
-		socialSharingCount = 0;
+		socialSharingCount = 5;
 	} else {
 		socialSharingCount += 1;
 	}
@@ -269,9 +277,3 @@ $("#startOverBtn").click(function(event) {
 	$('#alert').remove();
 	socialSharing();
 });
-
-
-
-
-
-
