@@ -217,9 +217,10 @@ $('.gameIconsSet').click(function(event) {
 $("#startOverBtn").click(function(event) {
 	event.preventDefault();
 	gameOptions.gameStarted = false;
-	$('#computerChooseFinal').hide();
+	$('#'+computer.currentChoose).hide();
 	$('#computerChoose').show();
 	$('.gameIconsSet').css('width', '100px');
+	$('#alert').remove();
 });
 
 
