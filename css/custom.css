@@ -88,6 +88,10 @@ ul > li {
 	background-color: red;
 }
 
+.draw {
+	background-color: yellow;
+}
+
 .gameStats {
 margin-bottom: 100px;
 }

@@ -14,7 +14,9 @@ var gameOptions = {
 							"stone",
 							"scissors",
 							"paper"
-						]
+						],
+	playerIconTable		: "",
+	computerIconTable	: ""					
 };
 
 var playerOne = {
@@ -27,6 +29,7 @@ var computer = {
 };
 
 var randomNumber = "";
+var socialSharingCount = 0;
 
 $('#startOverBtn').hide();
 
@@ -84,26 +87,28 @@ var alertDraw = function() {
 	$('#alerts').append("<div id='alert' class='col-md-8 col-md-offset-2'><div class='alert alert-warning alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Hmmmmm!! </strong>" + 'Draw!!! Not bad, right?' + "</div></div>")
 }
 
-
 var evaluateGame = function() {
 	if (playerOne.currentChoose === computer.currentChoose) {
 		gameOptions.gameWinner = "draw";
 		console.log('draw!');
 		alertDraw();
+
 	} else if (playerOne.currentChoose === "stone") {
 				switch(playerOne.currentChoose === "stone"){
 					case computer.currentChoose === "paper":
 						gameOptions.gameWinner = "computer";
 						console.log('Paper beat stone! Computer wins!');
 						alertLose();
+					
+						gameOptions.playerResultTable = "lose";
 						break;
 					case computer.currentChoose === "scissors":
 						gameOptions.gameWinner = "player";
 						console.log('Stone beat Scissors! Player wins!');
 						alertWin();
 						break;
-
 					} 
+
 				} else if (playerOne.currentChoose === "scissors") {
 						switch(playerOne.currentChoose === "scissors"){
 							case computer.currentChoose === "paper":
@@ -153,15 +158,47 @@ var addScores = function() {
 			break;
 		};
 	$('#scoresTable').append('<tr class="single-game"><td class="gameNumber">' 
-		+ gameOptions.totalGames + '</td><td class="playerChoose lose">'
-		+ '<img src="img/paper.svg" class="gameIcons" alt="">' 
-		+ '</td><td class="computerChoose win">'
-	    + '<img src="img/stone.svg" class="gameIcons" alt="">'
+		+ gameOptions.totalGames + '</td><td id="playerIconTable" class="playerChoose">'
+		+ '<img class="gameIcons" alt="">' 
+		+ '</td><td id="computerIconTable" class="computerChoose">'
+	    + '<img class="gameIcons" alt="">'
 		+ '</td><td class="whoWins">' 
 		+ displayUserName() + '</td></tr>');
-	console.log(playerOne.currentChoose + 'Path');
 	
+	displayIconTable();
+
 };
+
+var displayIconTable = function() {
+	switch(playerOne.currentChoose !== ""){
+		case playerOne.currentChoose == "stone":
+			gameOptions.playerIconTable = gameOptions.stonePath; 
+			break;
+		case playerOne.currentChoose == "scissors":
+			gameOptions.playerIconTable = gameOptions.scissorsPath; 
+			break;
+		case playerOne.currentChoose == "paper":
+			gameOptions.playerIconTable = gameOptions.paperPath; 
+			break;	
+	};
+
+	switch(computer.currentChoose !== ""){
+		case computer.currentChoose == "stone":
+			gameOptions.computerIconTable = gameOptions.stonePath; 
+			break;
+		case computer.currentChoose == "scissors":
+			gameOptions.computerIconTable = gameOptions.scissorsPath; 
+			break;
+		case computer.currentChoose == "paper":
+			gameOptions.computerIconTable = gameOptions.paperPath; 
+			break;	
+	};	
+
+	$('#playerIconTable img').last().attr('src', gameOptions.playerIconTable);
+	$('#computerIconTable img').last().attr('src', gameOptions.computerIconTable);
+
+};
+
 
 var displayUserName = function() {
 	if (gameOptions.gameWinner == "player") {
@@ -171,6 +208,15 @@ var displayUserName = function() {
 			} else {
 				return gameOptions.gameWinner;
 			}
+};
+
+var socialSharing = function() {
+	if ((socialSharingCount > 0)) {
+		$('#socialSharing').modal('show');
+		socialSharingCount = 0;
+	} else {
+		socialSharingCount += 1;
+	}
 }
 
 // change your name via modal 
@@ -221,6 +267,7 @@ $("#startOverBtn").click(function(event) {
 	$('#computerChoose').show();
 	$('.gameIconsSet').css('width', '100px');
 	$('#alert').remove();
+	socialSharing();
 });
 
 
