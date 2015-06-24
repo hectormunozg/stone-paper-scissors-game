@@ -173,14 +173,6 @@ var displayUserName = function() {
 			}
 }
 
-var displayResults = function() {};
-
-var stopCurrentGame = function() {};
-
-var startOver = function() {};
-
-
-
 // change your name via modal 
 $('#yourNameBtn').click(function() {
 	// store the variable when button "save changes" is pressed
