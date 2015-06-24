@@ -27,4 +27,19 @@ var gameRoulette = function() {
 	});	
 }
 
+// change your name via modal 
+$('#yourNameBtn').click(function() {
+	// store the variable when button "save changes" is pressed
+	var userName = $('#userName').val();
+	// change the paragraph
+	$('#userNameText').text('All right, ' + userName + "! Let's start! Your turn!");
+	// change table 1 name
+	$('#userNameTable').text(userName + ' Choose');
+	// change table 2 name
+	$('#userNameScores').text(userName);
+	// show game boards
+	showBoard();
+	gameRoulette();
+});
+
 
