@@ -57,15 +57,44 @@ var computerChoose = function() {
 	computer.currentChoose = (gameOptions.gameValues[randomNumber]);
 	$('#'+computer.currentChoose).show();
 
-	console.log(computer.currentChoose + ' ' + playerOne.currentChoose);
+	console.log(playerOne.currentChoose + ' ' + computer.currentChoose);
 
 }
 
 var evaluateGame = function() {
-	if (playerOne.CurrentChoose === computer.currentChoose) {
+	if (playerOne.currentChoose === computer.currentChoose) {
 		console.log('draw!');
+	} else if (playerOne.currentChoose === "stone") {
+				switch(playerOne.currentChoose === "stone"){
+					case computer.currentChoose === "paper":
+						console.log('Paper beat stone! Computer wins!');
+						break;
+					case computer.currentChoose === "scissors":
+						console.log('Stone beat Scissors! Player wins!');
+
+					} 
+				} else if (playerOne.currentChoose === "scissors") {
+						switch(playerOne.currentChoose === "scissors"){
+							case computer.currentChoose === "paper":
+								console.log('Scissors beat paper! Player wins');
+								break;
+							case computer.currentChoose === "stone":
+								console.log('Stone beats scissors! Computer wins');
+								break;
+							}
+
+						} else if (playerOne.currentChoose === "paper") {
+									switch(playerOne.currentChoose === "paper"){
+										case computer.currentChoose === "scissors":
+											console.log('Scissors beats paper! Computer wins');
+											break;
+										case computer.currentChoose === "stone":
+											console.log('Paper beats stone! Player wins');
+											break;
+										}
+								}
+
 	};
-};
 
 var addScores = function() {};
 
@@ -105,7 +134,6 @@ $('.gameIconsSet').click(function(event) {
 	event.preventDefault();
 
 	if (!gameOptions.gameStarted) {
-
 		gameOptions.gameStarted = true;
 		$(this).css('width', '160px');
 		playerOne.currentChoose = $(this).attr('game');
