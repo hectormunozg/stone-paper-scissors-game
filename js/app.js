@@ -6,6 +6,17 @@ var scissors = "img/scissors.svg";
 var paper = "img/paper.svg";
 var gameStarted = false;
 
+var playerOne = {
+	userName  	  : "",
+	totalWins     : 0,
+	currentChoose : ""
+};
+
+var computer = {
+	totalWins	  : 0,
+	currentChoose : ""
+};
+
 // functions
 var showBoard = function() {
 	$('#gamePlayerBoard').show();
@@ -56,11 +67,25 @@ $('.gameIconsSet').click(function(event) {
 	if (!gameStarted) {
 		gameStarted = true;
 		$(this).css('width', '160px');
-		clearInterval(rouletteEffect);
 	} else {
 		// yeahhh
 	};
 
 
 });
+
+// player 1 choose option
+// computer randomly select option
+// game evaluate who wins
+// data is stored in stats
+// game is prepared for next round
+
+
+
+
+
+
+
+
+
 
