@@ -18,7 +18,7 @@ var gameOptions = {
 };
 
 var playerOne = {
-	userName  	  : "",
+	userName  	  : "Player One",
 	currentChoose : ""
 };
 
@@ -158,10 +158,20 @@ var addScores = function() {
 		+ '</td><td class="computerChoose win">'
 	    + '<img src="img/stone.svg" class="gameIcons" alt="">'
 		+ '</td><td class="whoWins">' 
-		+ gameOptions.gameWinner + '</td></tr>');
+		+ displayUserName() + '</td></tr>');
 	console.log(playerOne.currentChoose + 'Path');
 	
 };
+
+var displayUserName = function() {
+	if (gameOptions.gameWinner == "player") {
+		return playerOne.userName;
+	} else if (gameOptions.gameWinner == "player") {
+		return gameOptions.gameWinner;
+			} else {
+				return gameOptions.gameWinner;
+			}
+}
 
 var displayResults = function() {};
 
@@ -204,9 +214,7 @@ $('.gameIconsSet').click(function(event) {
 		playerOne.currentChoose = $(this).attr('game');
 		computerChoose();
 		evaluateGame();
-		addScores();
-	// displayResults();
-	// stopCurrentGame();		
+		addScores();		
 
 	} else {
 		console.log(gameOptions.gameStarted);
