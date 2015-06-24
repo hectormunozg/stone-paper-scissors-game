@@ -84,19 +84,19 @@
 		<div class="row">
 			<h2>Here are your stats!</h2>	
 			<div class="col-lg-8 col-md-8 col-sm-7">			
-				<table class="table table-striped">
+				<table id="scoresTable" class="table table-striped">
 					<tr class="heading">
 						<th>#</th>
 						<th id="userNameTable">Player 1 Choose</th>
 						<th>Computer Choose</th>
 						<th>Who wins</th>
 					</tr>
-					<tr class="single-game">
+<!-- 					<tr class="single-game">
 						<td class="gameNumber">1</td>
 						<td class="playerChoose lose"><img src="img/paper.svg" class="gameIcons" alt=""></td>
 						<td class="computerChoose win"><img src="img/stone.svg" class="gameIcons" alt=""></td>
 						<td class="whoWins">Computer wins!</td>
-					</tr>
+					</tr> -->
 				</table>
 			</div>
 			<div class="scoreTable">
@@ -106,11 +106,13 @@
 							<th id="userNameScores">Player 1</th>
 							<th>Computer</th>
 							<th>Draw</th>
+							<th>Total</th>
 						</tr>
 						<tr class="single-game">
-							<td class="score" id="scoreCountPlayer">10</td>
+							<td class="score" id="scoreCountPlayer">0</td>
 							<td class="score" id="scoreCountComputer">0</td>
-							<td class="score" id="scoreConutDraw">1</td>
+							<td class="score" id="scoreCountDraw">0</td>
+							<td class="score" id="scoreTotal">0</td>
 						</tr>
 					</table>		
 				</div>

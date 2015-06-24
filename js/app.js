@@ -137,17 +137,30 @@ var evaluateGame = function() {
 
 var addScores = function() {
 	gameOptions.totalGames = gameOptions.totalGames + 1;
+	$('#scoreTotal').text(gameOptions.totalGames);
 	switch(gameOptions.gameWinner != ""){
 		case gameOptions.gameWinner == "player":
 			gameOptions.playerWins = gameOptions.playerWins + 1;
+			$('#scoreCountPlayer').text(gameOptions.playerWins);
 			break;
 		case gameOptions.gameWinner == "computer":
 			gameOptions.computerWins = gameOptions.computerWins + 1;
+			$('#scoreCountComputer').text(gameOptions.computerWins);
 			break;
 		case gameOptions.gameWinner == "draw":
 			gameOptions.drawGames = gameOptions.drawGames + 1;
+			$('#scoreCountDraw').text(gameOptions.drawGames);
 			break;
-	}
+		};
+	$('#scoresTable').append('<tr class="single-game"><td class="gameNumber">' 
+		+ gameOptions.totalGames + '</td><td class="playerChoose lose">'
+		+ '<img src="img/paper.svg" class="gameIcons" alt="">' 
+		+ '</td><td class="computerChoose win">'
+	    + '<img src="img/stone.svg" class="gameIcons" alt="">'
+		+ '</td><td class="whoWins">' 
+		+ gameOptions.gameWinner + '</td></tr>');
+	console.log(playerOne.currentChoose + 'Path');
+	
 };
 
 var displayResults = function() {};
@@ -206,6 +219,7 @@ $("#startOverBtn").click(function(event) {
 	gameOptions.gameStarted = false;
 	$('#computerChooseFinal').hide();
 	$('#computerChoose').show();
+	$('.gameIconsSet').css('width', '100px');
 });
 
 
