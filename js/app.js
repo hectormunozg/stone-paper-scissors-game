@@ -63,7 +63,7 @@ var storeSelection = function(target) {
 	};		
 }
 var getRandom = function() {
-  randomNumber =  Math.floor(Math.random() * 2);
+  randomNumber =  Math.floor(Math.random() * 3);
 }
 
 var computerChoose = function() {
