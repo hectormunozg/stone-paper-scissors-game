@@ -5,7 +5,11 @@ var gameOptions = {
 	scissorsPath    	: "img/scissors.svg",
 	paperPath       	: "img/paper.svg",
 	gameStarted 		: false,
+	playerWins			: 0,
+	computerWins		: 0,
+	drawGames			: 0,
 	totalGames			: 0,
+	gameWinner			: "",
 	gameValues 			: [
 							"stone",
 							"scissors",
@@ -15,12 +19,10 @@ var gameOptions = {
 
 var playerOne = {
 	userName  	  : "",
-	totalWins     : 0,
 	currentChoose : ""
 };
 
 var computer = {
-	totalWins	  : 0,
 	currentChoose : ""
 };
 
@@ -69,31 +71,34 @@ var startOverBtn = function() {
 
 var alertWin = function(){
 	startOverBtn();
-	$('#alerts').append("<div class='col-md-8 col-md-offset-2'><div class='alert alert-success alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Yeahhh! </strong>" + playerOne.currentChoose + ' beats ' + computer.currentChoose + '!!!' + ' You win!!!' + "</div></div>")
+	$('#alerts').append("<div id='alert' class='col-md-8 col-md-offset-2'><div class='alert alert-success alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Yeahhh! </strong>" + playerOne.currentChoose + ' beats ' + computer.currentChoose + '!!!' + ' You win!!!' + "</div></div>")
 }
 
 var alertLose = function() {
 	startOverBtn();
-	$('#alerts').append("<div class='col-md-8 col-md-offset-2'><div class='alert alert-danger alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>UPPPPSSS! </strong>" + computer.currentChoose + ' beats ' + playerOne.currentChoose + '!!!' + ' You lose!!!' + "</div></div>")
+	$('#alerts').append("<div id='alert' class='col-md-8 col-md-offset-2'><div class='alert alert-danger alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>UPPPPSSS! </strong>" + computer.currentChoose + ' beats ' + playerOne.currentChoose + '!!!' + ' You lose!!!' + "</div></div>")
 }
 
 var alertDraw = function() {
 	startOverBtn();
-	$('#alerts').append("<div class='col-md-8 col-md-offset-2'><div class='alert alert-warning alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Hmmmmm!! </strong>" + 'Draw!!! Not bad, right?' + "</div></div>")
+	$('#alerts').append("<div id='alert' class='col-md-8 col-md-offset-2'><div class='alert alert-warning alert-dismissible fade in' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Hmmmmm!! </strong>" + 'Draw!!! Not bad, right?' + "</div></div>")
 }
 
 
 var evaluateGame = function() {
 	if (playerOne.currentChoose === computer.currentChoose) {
+		gameOptions.gameWinner = "draw";
 		console.log('draw!');
 		alertDraw();
 	} else if (playerOne.currentChoose === "stone") {
 				switch(playerOne.currentChoose === "stone"){
 					case computer.currentChoose === "paper":
+						gameOptions.gameWinner = "computer";
 						console.log('Paper beat stone! Computer wins!');
 						alertLose();
 						break;
 					case computer.currentChoose === "scissors":
+						gameOptions.gameWinner = "player";
 						console.log('Stone beat Scissors! Player wins!');
 						alertWin();
 						break;
@@ -102,10 +107,12 @@ var evaluateGame = function() {
 				} else if (playerOne.currentChoose === "scissors") {
 						switch(playerOne.currentChoose === "scissors"){
 							case computer.currentChoose === "paper":
+								gameOptions.gameWinner = "player";
 								console.log('Scissors beat paper! Player wins');
 								alertWin();
 								break;
 							case computer.currentChoose === "stone":
+								gameOptions.gameWinner = "computer";
 								console.log('Stone beats scissors! Computer wins');
 								alertLose();
 								break;
@@ -114,10 +121,12 @@ var evaluateGame = function() {
 						} else if (playerOne.currentChoose === "paper") {
 									switch(playerOne.currentChoose === "paper"){
 										case computer.currentChoose === "scissors":
+											gameOptions.gameWinner = "computer";
 											console.log('Scissors beats paper! Computer wins');
 											alertLose();
 											break;
 										case computer.currentChoose === "stone":
+											gameOptions.gameWinner = "player";
 											console.log('Paper beats stone! Player wins');
 											alertWin();
 											break;
@@ -126,7 +135,20 @@ var evaluateGame = function() {
 
 	};
 
-var addScores = function() {};
+var addScores = function() {
+	gameOptions.totalGames = gameOptions.totalGames + 1;
+	switch(gameOptions.gameWinner != ""){
+		case gameOptions.gameWinner == "player":
+			gameOptions.playerWins = gameOptions.playerWins + 1;
+			break;
+		case gameOptions.gameWinner == "computer":
+			gameOptions.computerWins = gameOptions.computerWins + 1;
+			break;
+		case gameOptions.gameWinner == "draw":
+			gameOptions.drawGames = gameOptions.drawGames + 1;
+			break;
+	}
+};
 
 var displayResults = function() {};
 
@@ -169,13 +191,25 @@ $('.gameIconsSet').click(function(event) {
 		playerOne.currentChoose = $(this).attr('game');
 		computerChoose();
 		evaluateGame();
-
-	// addScores();
+		addScores();
 	// displayResults();
 	// stopCurrentGame();		
 
 	} else {
 		console.log(gameOptions.gameStarted);
 	};	
-
 });
+
+// start over button
+$("#startOverBtn").click(function(event) {
+	event.preventDefault();
+	gameOptions.gameStarted = false;
+	$('#computerChooseFinal').hide();
+	$('#computerChoose').show();
+});
+
+
+
+
+
+
