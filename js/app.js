@@ -47,22 +47,6 @@ var gameRoulette = function() {
 	});	
 }
 
-var storeSelection = function(target) {
-	//prevent second choice before finishing the game
-	if (!gameOptions.gameStarted) {
-
-		gameOptions.gameStarted = true;
-		target.css('width', '160px');
-
-		playerOne.currentChoose = $(target).attr('game');
-
-
-	} else {
-		console.log(gameOptions.gameStarted);
-
-
-	};		
-}
 var getRandom = function() {
   randomNumber =  Math.floor(Math.random() * 3);
 }
